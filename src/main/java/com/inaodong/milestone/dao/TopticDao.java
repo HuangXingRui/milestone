@@ -30,5 +30,5 @@ public interface TopticDao {
 	 * @param pageSize
 	 * @return
 	 */
-	List<Toptic> queryTopticAndContent(@Param("currentPage") Integer currentPage, @Param("pageSize") Integer pageSize);
+	List<Toptic> queryTopticList(@Param("currentPage") Integer currentPage, @Param("pageSize") Integer pageSize);
 }

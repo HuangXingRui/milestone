@@ -127,7 +127,6 @@ public class UserController {
 			result = userService.checkEmail(request.getParameter(paramType));
 			if (result == 0) {
 				modelMap.put("result", true);
-				modelMap.put("message", "email");
 			} else {
 				modelMap.put("result", false);
 				modelMap.put("message", "邮箱已被使用！");

@@ -1,7 +1,8 @@
 package com.inaodong.milestone.web.toptic;
 
-
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,16 +20,23 @@ import com.inaodong.milestone.service.TopticService;
 import com.inaodong.milestone.util.HttpServletRequestUtil;
 import com.inaodong.milestone.util.ImageUtil;
 
-	
+/**
+ * 发帖功能存在问题 图片处理问题
+ * 
+ * @author SEELE
+ *
+ */
 @Controller
-@RequestMapping(value="/page", method=RequestMethod.POST )
+@RequestMapping(value = "/page", method = RequestMethod.POST)
 public class PageController {
 
 	@Autowired
 	private TopticService topticService;
+
 	@ResponseBody
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public Map<String, Object> newPage(HttpServletRequest request){
+	public Map<String, Object> newPage(HttpServletRequest request) {
+		Map<String, Object> modelMap = new HashMap<String, Object>();
 		String title = HttpServletRequestUtil.getString(request, "title");
 		String content = HttpServletRequestUtil.getString(request, "content");
 		int district = HttpServletRequestUtil.getInt(request, "district");
@@ -43,9 +51,32 @@ public class PageController {
 		Content contentObject = new Content();
 		content = ImageUtil.base64ToImage(content);
 		contentObject.setContent(content);
-		topticService.insertToptic(toptic,contentObject);
-		
-		
-		return null;
+		int result = topticService.insertToptic(toptic, contentObject);
+		if(result == 0) {
+			modelMap.put("result", false);
+			modelMap.put("message", "发帖失败");
+		}else {
+			modelMap.put("result", true);
+		}
+
+		return modelMap;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/query", method = RequestMethod.POST)
+	public Map<String, Object> queryPageList(HttpServletRequest request) {
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		int currentPage = HttpServletRequestUtil.getInt(request, "currentPage");
+		int pageSize = HttpServletRequestUtil.getInt(request, "pageSize");
+		List<Toptic> topticList = topticService.queryPageList(currentPage, pageSize);
+		if (topticList != null && topticList.size() != 0) {
+			modelMap.put("result", true);
+			modelMap.put("topticList", topticList);
+		} else {
+			modelMap.put("result", false);
+			modelMap.put("message", "查询帖子主题失败");
+		}
+
+		return modelMap;
 	}
 }

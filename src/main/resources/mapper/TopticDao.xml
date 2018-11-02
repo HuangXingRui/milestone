@@ -22,4 +22,14 @@
 		insert into
 		tbl_conten(toptic_id,content)values(#{topticId},#{content});
 	</insert>
+	<select id="queryTopticList"
+		resultType="com.inaodong.milestone.entity.Toptic">
+		SELECT
+		toptic_id,title,user_id,district,create_time,replay_time,status
+		FROM
+		tb_toptic
+		ORDER BY
+		toptic_id
+		LIMIT #{currentPage},#{pageSize};
+	</select>
 </mapper>

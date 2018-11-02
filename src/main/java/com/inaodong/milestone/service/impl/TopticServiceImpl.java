@@ -1,5 +1,7 @@
 package com.inaodong.milestone.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,12 @@ public class TopticServiceImpl  implements TopticService{
 		content.setTopticId(keyId);
 		result  = topticDao.insertContent(content);
 		return result;
+	}
+
+	@Override
+	public List<Toptic> queryPageList(int currentPage, int pageSize) {
+		List<Toptic> topticList = topticDao.queryTopticList(currentPage, pageSize);
+		return topticList;
 	}
 
 }
