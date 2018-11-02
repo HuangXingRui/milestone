@@ -7,7 +7,7 @@ public class Content {
 	private Integer topticId;
 	// 内容
 	private String content;
-
+	//提交测试
 	public Integer getContentId() {
 		return contentId;
 	}
