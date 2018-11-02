@@ -7,6 +7,6 @@
 		parameterType="com.inaodong.milestone.entity.Replay"
 		useGeneratedKeys="true" keyProperty="replayId" keyColumn="replay_id">
 		insert into
-		tbl_replay(toptic_id,content,create_time,status)values(#{topticId,content,createTime,status})
+		tbl_replay(toptic_id,content,create_time,status)values(#{topticId},#{content},#{createTime},#{status})
 	</insert>
 </mapper>
