@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>脑洞社区</title>
+
+<!-- Bootstrap -->
+<link href="/milestone/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/milestone/resources/css/font-awesome.css" rel="stylesheet">
+<link href="/milestone/resources/css/index.css" rel="stylesheet" />
+<script src="/milestone/resources/js/jquery-3.3.1.js"></script>
+<script src="/milestone/resources/js/bootstrap.min.js"></script>
+<script src="/milestone/resources/js/jquery.hotkeys.js"></script>
+<script src="/milestone/resources/js/bootstrap-wysiwyg.js"></script>
+<script src="/milestone/resources/js/milestone.js"></script>
+
+
+</head>
+<body>
+	<div class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 navbar-header">
+					<a href="index.html" class="navbar-brand">脑洞社区</a>
+				</div>
+				<div class="col-md-6">
+					<form action="##" class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="请输入关键词" />
+						</div>
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<ul class="nav navbar-nav justify-content-end pull-right">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="register.html">注册</a></li>
+						<li><a href="login.html">登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<!-- 修改区域 -->
+				<div class="panel panel-default">
+					<div class="panel-heading">&nbsp;发表新主题</div>
+					<div class="panel-body">
+						<form id="newForm">
+							<p>标题</p>
+							<div class="form-group">
+								<input id="title" type="text" class="form-control" name="title"
+									maxlength="30" required="required">
+								<div class="help-block"></div>
+							</div>
+							<p>主题内容</p>
+							<!-- 富文本 -->
+							<div class="form-group">
+								<div class="btn-toolbar" data-role="editor-toolbar"
+									data-target="#editor">
+									<div class="btn-group">
+										<a class="btn dropdown-toggle" data-toggle="dropdown"
+											title="Font"><i class="icon-font"></i><b class="caret"></b></a>
+										<ul class="dropdown-menu">
+										</ul>
+									</div>
+									<div class="btn-group">
+										<a class="btn dropdown-toggle" data-toggle="dropdown"
+											title="Font Size"><i class="icon-text-height"></i>&nbsp;<b
+											class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+											<li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+											<li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+										</ul>
+									</div>
+									<div class="btn-group">
+										<a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i
+											class="icon-bold"></i></a> <a class="btn" data-edit="italic"
+											title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a> <a
+											class="btn" data-edit="strikethrough" title="Strikethrough"><i
+											class="icon-strikethrough"></i></a> <a class="btn"
+											data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i
+											class="icon-underline"></i></a>
+									</div>
+									<div class="btn-group">
+										<a class="btn" data-edit="insertunorderedlist"
+											title="Bullet list"><i class="icon-list-ul"></i></a> <a
+											class="btn" data-edit="insertorderedlist" title="Number list"><i
+											class="icon-list-ol"></i></a> <a class="btn" data-edit="outdent"
+											title="Reduce indent (Shift+Tab)"><i
+											class="icon-indent-left"></i></a> <a class="btn"
+											data-edit="indent" title="Indent (Tab)"><i
+											class="icon-indent-right"></i></a>
+									</div>
+									<div class="btn-group">
+										<a class="btn" data-edit="justifyleft"
+											title="Align Left (Ctrl/Cmd+L)"><i
+											class="icon-align-left"></i></a> <a class="btn"
+											data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i
+											class="icon-align-center"></i></a> <a class="btn"
+											data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i
+											class="icon-align-right"></i></a> <a class="btn"
+											data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i
+											class="icon-align-justify"></i></a>
+									</div>
+									<div class="btn-group">
+										<a class="btn dropdown-toggle" data-toggle="dropdown"
+											title="Hyperlink"><i class="icon-link"></i></a>
+										<div class="dropdown-menu input-append">
+											<input class="span2" placeholder="URL" type="text"
+												data-edit="createLink" />
+											<button class="btn" type="button">Add</button>
+										</div>
+										<a class="btn" data-edit="unlink" title="Remove Hyperlink"><i
+											class="icon-cut"></i></a>
+
+									</div>
+
+									<div class="btn-group">
+										<a class="btn" title="Insert picture (or just drag & drop)"
+											id="pictureBtn"><i class="icon-picture"></i></a> <input
+											type="file" data-role="magic-overlay"
+											data-target="#pictureBtn" data-edit="insertImage" />
+									</div>
+									<div class="btn-group">
+										<a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i
+											class="icon-undo"></i></a> <a class="btn" data-edit="redo"
+											title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+									</div>
+									<input type="text" data-edit="inserttext" id="voiceBtn"
+										x-webkit-speech="">
+								</div>
+
+								<div id="editor" class="form-control"></div>
+							</div>
+							<p>主题版块</p>
+							<div class="form-group">
+								<select class="form-control" name="district" id="district">
+									<option value="0">网站开发</option>
+									<option value="1">脑洞爆炸</option>
+									<option value="2">生活杂谈</option>
+								</select>
+							</div>
+							<button type="button" class="btn btn-default" onclick="newPage()">
+								<span class="glyphicon glyphicon-pencil">发帖</span>
+							</button>
+						</form>
+					</div>
+				</div>
+				<!-- 修改区域 -->
+			</div>
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong>脑洞社区</strong>
+					</div>
+					<div class="panel-body text-center">
+						<a href="" class="btn btn-info"><span
+							class="glyphicon glyphicon-user">登录</span></a> <br /> <br />
+						<p>
+							已有帐号，现在<a href="">登录</a>
+						</p>
+					</div>
+					<div class="panel-footer">作者：人肉榨汁机</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">脑洞社区</div>
+					<div class="panel-body">详细讲解了选择器、边框、背景、文本、颜色、盒模型、伸缩布局盒模型、多列布局、渐变、过渡、动画、媒体、响应Web设计、Web字体等主题下涵盖的所有CSS3新特性
+					</div>
+					<div class="panel-footer">作者：人肉榨汁机</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="footer navbar-fixed-bottom">
+		<div class="container">
+			<div class="row footer-top">
+				<div class="col-sm-6 col-lg-6">
+					<h4></h4>
+					<p>欢迎你加入，这里有你想要的.</p>
+				</div>
+				<div class="col-sm-6  col-lg-5 col-lg-offset-1">
+					<div class="row about">
+						<div class="col-xs-3">
+							<h4>关于</h4>
+							<ul class="list-unstyled">
+								<li><a href="">关于我们</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-3">
+							<h4>联系方式</h4>
+							<ul class="list-unstyled">
+								<li><a target="_blank" title="云梦网官方微博" href="">新浪微博</a></li>
+								<li><a href="">电子邮件</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<hr>
+			<div class="row footer-bottom">
+				<ul class="list-inline text-center">
+					<li>Copyright &copy;2016. n 洛阳限公司 Software All Rights
+						Reserved.</li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+	<script type="text/javascript">
+		// 富文本时间
+	</script>
+</body>
+
+</html>

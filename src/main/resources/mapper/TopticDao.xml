@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inaodong.milestone.dao.TopticDao">
+	<insert id="insertToptic"
+		parameterType="com.inaodong.milestone.entity.Toptic"
+		useGeneratedKeys="true" keyProperty="topticId" keyColumn="toptic_id">
+		<selectKey keyProperty="topticId" resultType="int"
+			order="AFTER">
+			select last_insert_id()
+		</selectKey>
+		insert into
+		tbl_toptic(toptic_id,title,user_id,district,create_time,replay_time,status)
+		values
+		(#{topticId},#{title},#{userId},#{district},#{createTime},#{replayTime},#{status});
+	</insert>
+
+	<insert id="insertContent"
+		parameterType="com.inaodong.milestone.entity.Content"
+		useGeneratedKeys="true" keyProperty="contentId" keyColumn="content_id">
+		insert into
+		tbl_conten(toptic_id,content)values(#{topticId},#{content});
+	</insert>
+</mapper>

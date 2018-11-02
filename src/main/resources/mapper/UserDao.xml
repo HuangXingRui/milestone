@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.inaodong.milestone.dao.UserDao">
+	<!-- <select id="queryUser" resultType="com.inaodong.milestone.entity.User"> 
+		select * from tbl_user; </select> -->
+
+	<insert id="register"
+		parameterType="com.inaodong.milestone.entity.User"
+		useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id">
+		insert into
+		tbl_user(user_id,user_name,password,email,nick_name,create_time,login_time,user_type,status)
+		values(#{userId},#{userName},#{password},#{email},#{nickName},#{createTime},#{loginTime},#{userType},#{status});
+	</insert>
+	<select id="login" parameterType="String"
+		resultType="com.inaodong.milestone.entity.User">
+		select
+		* from tbl_user
+		where user_name=#{userName} and
+		password=#{password};
+	</select>
+	<select id="checkUserName" parameterType="String"
+		resultType="int">
+		select count(*) from tbl_user
+		where
+		user_name=#{userName};
+	</select>
+	<select id="checkEmail" parameterType="String" resultType="int">
+		select count(*) from tbl_user
+		where
+		email=#{email};
+	</select>
+	<select id="checkNickName" parameterType="String"
+		resultType="int">
+		select count(*) from tbl_user
+		where
+		nick_name=#{nickName};
+	</select>
+	<update id="updateLoginTime" >
+		update tbl_user set login_time=#{loginTime} where
+		user_id=#{userId};
+	</update>
+</mapper>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>脑洞社区</title>
+
+<!-- Bootstrap -->
+<link href="/milestone/resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/milestone/resources/js/jquery-3.3.1.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/milestone/resources/js/bootstrap.min.js"></script>
+<script src="/milestone/resources/js/milestone.js"></script>
+
+</head>
+<body>
+	<div class="navbar navbar-inverse" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 navbar-header">
+					<a href="index.html" class="navbar-brand">脑洞社区</a>
+				</div>
+				<div class="col-md-6">
+					<form action="##" class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="请输入关键词" />
+						</div>
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<ul class="nav navbar-nav justify-content-end pull-right">
+						<li><a href="index.html">首页</a></li>
+						<li><a href="register.html">注册</a></li>
+						<li><a href="login.html">登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">登录界面</div>
+					<div class="panel-body">
+						<form id="loginForm" class="form-horizontal" method="post"
+							role="form">
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="usernameId">用户名</label>
+								<div class="col-md-6">
+									<input id="userNameId" type="text" class="form-control"
+										name="userName" maxlength="16" required="required">
+									<div class="text-danger"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="passwordId">密码</label>
+								<div class="col-md-6">
+									<input id="passwordId" type="password" class="form-control"
+										name="password" maxlength="32" required="required">
+									<div class="text-danger"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-3">
+									<div class="checkbox">
+										<label> <input id="rememberId" type="checkbox"
+											name="remember" checked="checked">下次自动登录
+										</label>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="captchaId">验证码</label>
+								<div class="col-md-4">
+									<input id="captchaId" type="text" class="form-control"
+										name="captcha" maxlength="4" required="required"
+										onblur="checkParam(this)">
+
+									<div id="captchaHelp" class="text-danger"></div>
+								</div>
+								<div class="col-md-2">
+									<img id="captcha-img" src="/milestone/kaptcha"
+										onclick="changeCaptcha()">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-3">
+									<button type="button" class="btn btn-default"
+										onclick="sendLogin()">登录</button>
+									<span>&nbsp;&nbsp;没有帐号，现在去<a href="register.html">注册</a></span>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="panel-footer">作者：人肉榨汁机</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong>脑洞社区</strong>
+					</div>
+					<div class="panel-body text-center">
+						<a href="" class="btn btn-info"><span
+							class="glyphicon glyphicon-user">登录</span></a> <br /> <br />
+						<p>
+							已有帐号，现在<a href="">登录</a>
+						</p>
+					</div>
+					<div class="panel-footer">作者：人肉榨汁机</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">脑洞社区</div>
+					<div class="panel-body">详细讲解了选择器、边框、背景、文本、颜色、盒模型、伸缩布局盒模型、多列布局、渐变、过渡、动画、媒体、响应Web设计、Web字体等主题下涵盖的所有CSS3新特性
+					</div>
+					<div class="panel-footer">作者：人肉榨汁机</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="footer navbar-fixed-bottom">
+		<div class="container">
+			<div class="row footer-top">
+				<div class="col-sm-6 col-lg-6">
+					<h4></h4>
+					<p>欢迎你加入，这里有你想要的.</p>
+				</div>
+				<div class="col-sm-6  col-lg-5 col-lg-offset-1">
+					<div class="row about">
+						<div class="col-xs-3">
+							<h4>关于</h4>
+							<ul class="list-unstyled">
+								<li><a href="">关于我们</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-3">
+							<h4>联系方式</h4>
+							<ul class="list-unstyled">
+								<li><a target="_blank" title="云梦网官方微博" href="">新浪微博</a></li>
+								<li><a href="">电子邮件</a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<hr>
+			<div class="row footer-bottom">
+				<ul class="list-inline text-center">
+					<li>Copyright &copy;2016. n 洛阳限公司 Software All Rights
+						Reserved.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="themodal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">注册状态</h4>
+				</div>
+				<div class="modal-body">
+					<p id="result"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						onclick="clickConfirm()">确认</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
