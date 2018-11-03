@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.inaodong.milestone.dto.PageInfo;
 import com.inaodong.milestone.entity.Content;
 import com.inaodong.milestone.entity.Toptic;
 import com.inaodong.milestone.entity.User;
@@ -22,7 +23,7 @@ import com.inaodong.milestone.util.ImageUtil;
 
 /**
  * 发帖功能存在问题 图片处理问题
- * 
+ *  查询帖子功能
  * @author SEELE
  *
  */
@@ -66,12 +67,12 @@ public class PageController {
 	@RequestMapping(value = "/query", method = RequestMethod.POST)
 	public Map<String, Object> queryPageList(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		int currentPage = HttpServletRequestUtil.getInt(request, "currentPage");
+		int currentPage = HttpServletRequestUtil.getInt(request, "currentPage") - 1;
 		int pageSize = HttpServletRequestUtil.getInt(request, "pageSize");
-		List<Toptic> topticList = topticService.queryPageList(currentPage, pageSize);
-		if (topticList != null && topticList.size() != 0) {
+		List<PageInfo> pageInfoList = topticService.queryPageList(currentPage, pageSize);
+		if (pageInfoList != null && pageInfoList.size() != 0) {
 			modelMap.put("result", true);
-			modelMap.put("topticList", topticList);
+			modelMap.put("pageInfoList", pageInfoList);
 		} else {
 			modelMap.put("result", false);
 			modelMap.put("message", "查询帖子主题失败");

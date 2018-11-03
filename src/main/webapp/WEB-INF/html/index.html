@@ -13,6 +13,7 @@
 <script src="/milestone/resources/js/jquery-3.3.1.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/milestone/resources/js/bootstrap.min.js"></script>
+<script src="/milestone/resources/js/milestone.js"></script>
 
 </head>
 <body>
@@ -45,14 +46,14 @@
 		<div class="row">
 			<div class="col-md-9">
 
-				<ul class="media-list list-group">
+				<ul class="media-list list-group" id="queryPageId">
 					<li class="list-group-item navi-top-list"><a href="#"
 						class="btn btn-default">全部</a> <a href="" class="btn btn-default">网站开发</a>
 						<a href="" class="btn btn-default">脑洞爆炸</a> <a href=""
 						class="btn btn-default">生活杂谈</a> <a href="/milestone/new"> <span
 							class="glyphicon glyphicon-pencil" style="float: right">发帖</span>
 					</a></li>
-					<li class="list-group-item media"><a class="pull-left"
+					<!-- <li class="list-group-item media"><a class="pull-left"
 						href="#"> <img class="media-object"
 							src="https://i1.hdslb.com/bfs/face/d7cdb62d663c33b5ceb11d45972c5271013dec0d.jpg@72w_72h.webp"
 							alt="...">
@@ -60,18 +61,20 @@
 						<div class="media-body">
 							<h4 class="media-heading">Media Header</h4>
 							<div>媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表媒体对象--媒体对象列表</div>
-						</div></li>
-					<li class="list-group-item item-pagination">
+						</div></li> -->
+					<!-- <div id="queryPageId"></div> -->
+					<!-- <li ><button class="btn btn-default" onclick="queryPage()">dianji</button></li> -->
+					<!-- <li class="list-group-item item-pagination">
 						<ul class="pagination pagination">
 							<li><a href="#">&laquo;第一页</a></li>
-							<li><a href="#">11</a></li>
-							<li><a href="#">12</a></li>
-							<li class="active"><a href="#">13</a></li>
-							<li><a href="#">14</a></li>
-							<li><a href="#">15</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
 							<li class="disabled"><a href="#">最后一页&raquo;</a></li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<div class="col-md-3">
@@ -134,5 +137,8 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	queryPage();
+	</script>
 </body>
 </html>

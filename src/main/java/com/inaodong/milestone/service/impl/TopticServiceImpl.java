@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.inaodong.milestone.dao.TopticDao;
+import com.inaodong.milestone.dto.PageInfo;
 import com.inaodong.milestone.entity.Content;
 import com.inaodong.milestone.entity.Toptic;
 import com.inaodong.milestone.service.TopticService;
@@ -28,8 +29,8 @@ public class TopticServiceImpl  implements TopticService{
 	}
 
 	@Override
-	public List<Toptic> queryPageList(int currentPage, int pageSize) {
-		List<Toptic> topticList = topticDao.queryTopticList(currentPage, pageSize);
+	public List<PageInfo> queryPageList(int currentPage, int pageSize) {
+		List<PageInfo> topticList = topticDao.queryPageInfoList(currentPage, pageSize);
 		return topticList;
 	}
 

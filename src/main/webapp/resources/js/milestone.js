@@ -213,8 +213,40 @@ function sendLogin() {
 }
 
 function newPage() {
-	var sendData= {title:$("#title").val(),content:$("#editor").html(),district:$("#district").val()};
+	var sendData = {
+		title : $("#title").val(),
+		content : $("#editor").html(),
+		district : $("#district").val()
+	};
 	$.post("/milestone/page/new", sendData, function(data) {
 
+	})
+}
+
+function queryPage() {
+
+	$.post("/milestone/page/query", {
+		currentPage : 1,
+		pageSize : 10
+	}, function(data) {
+		if (data.result) {
+			var pageInfoList = data.pageInfoList;
+			var output = "";
+			pageInfoList.forEach(function(item, index) {
+				output += '<li class="list-group-item media">'
+						+ '<a class="pull-left" href="#">'
+						+ '<img class="media-object" src="' + item.imageURL +'" alt="'+item.nickName+'" weight="50" height="50">'
+						+ '</a><div class="media-body">'
+						+ '<h4 class="media-heading">' + item.title + '</h4>'
+						+ '<div>'
+						+	'<div class="small gray">'
+						+	'<a class="btn btn-xs node small" href="#">'+item.district+'</a> • '
+						+	'<strong><i class="fa fa-user" aria-hidden="true"></i><a href="#">'+item.nickName+'</a> <span class="user-level user-level-1">V1</span></strong> • '
+						+	'<i class="fa fa-clock-o" aria-hidden="true"></i>'+item.beforeTime+'天前</div></div>' 
+						+ '</li>';
+
+			})
+			$("#queryPageId").append(output);
+		}
 	})
 }

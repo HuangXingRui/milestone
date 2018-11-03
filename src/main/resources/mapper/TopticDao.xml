@@ -22,14 +22,15 @@
 		insert into
 		tbl_conten(toptic_id,content)values(#{topticId},#{content});
 	</insert>
-	<select id="queryTopticList"
-		resultType="com.inaodong.milestone.entity.Toptic">
-		SELECT
-		toptic_id,title,user_id,district,create_time,replay_time,status
-		FROM
-		tb_toptic
-		ORDER BY
-		toptic_id
-		LIMIT #{currentPage},#{pageSize};
+
+	<select id="queryPageInfoList"
+		resultType="com.inaodong.milestone.dto.PageInfo">
+		select
+		t.toptic_id,t.title,t.district,u.nick_name,datediff(CURDATE(),
+		t.replay_time) as before_time
+		from tbl_toptic t,tbl_user u where
+		t.user_id = u.user_id
+		LIMIT
+		#{currentPage},#{pageSize};
 	</select>
 </mapper>

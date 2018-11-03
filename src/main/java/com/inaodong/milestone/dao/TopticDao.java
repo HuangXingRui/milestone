@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.inaodong.milestone.dto.PageInfo;
 import com.inaodong.milestone.entity.Content;
 import com.inaodong.milestone.entity.Toptic;
 
@@ -30,5 +31,5 @@ public interface TopticDao {
 	 * @param pageSize
 	 * @return
 	 */
-	List<Toptic> queryTopticList(@Param("currentPage") Integer currentPage, @Param("pageSize") Integer pageSize);
+	List<PageInfo> queryPageInfoList(@Param("currentPage") Integer currentPage, @Param("pageSize") Integer pageSize);
 }
